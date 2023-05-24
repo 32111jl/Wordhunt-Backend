@@ -12,7 +12,7 @@ import java.util.Comparator;
 public class WordHuntSolver {
   private char[][] board; // initial 4x4 board
   private Set<String> words; // set of words from words.txt
-  private Set<String> foundWords;
+  private Set<String> foundWords; // set of valid words from board
 
   public WordHuntSolver(char[][] board) {
     this.board = board;
@@ -20,7 +20,7 @@ public class WordHuntSolver {
     this.foundWords = new HashSet<>();
 
     try {
-      List<String> lines = Files.readAllLines(Paths.get("words.txt"));
+      List<String> lines = Files.readAllLines(Paths.get("wordhunt-solver/words.txt"));
       for (String line : lines) {
         words.add(line);
       }
@@ -51,7 +51,7 @@ public class WordHuntSolver {
         recursiveSolver(i, j, "", visited);
       }
     }
-    System.out.println("done");
+    // System.out.println("done");
   }
 
   private void recursiveSolver(int i, int j, String formedWord, boolean[][] visited) {
@@ -64,6 +64,11 @@ public class WordHuntSolver {
 
     formedWord += board[i][j]; // add current letter to the temporary formed word
     visited[i][j] = true; // mark current letter as visited
+
+    // if (!hasPrefix(formedWord)) { // if formedWord isn't a valid prefix, any other resulting words won't work either
+    //   visited[i][j] = false; // unmark current letter
+    //   return;
+    // }
 
     if (words.contains(formedWord)) {
       foundWords.add(formedWord);
@@ -82,6 +87,15 @@ public class WordHuntSolver {
     }
     visited[i][j] = false; // for backtracking purposes
   }
+
+  // private boolean hasPrefix(String prefix) {
+  //   for (String word : words) {
+  //     if (word.startsWith(prefix)) {
+  //       return true;
+  //     }
+  //   }
+  //   return false;
+  // }
 
   private List<String> sortFoundWords() { // sort by length and alphabetically
     List<String> sorted = new ArrayList<>(foundWords);
