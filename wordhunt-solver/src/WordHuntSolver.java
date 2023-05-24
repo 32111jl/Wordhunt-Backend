@@ -134,12 +134,19 @@ public class WordHuntSolver {
 
     char[][] board = convertBoard(str);
 
+    long startTime = System.currentTimeMillis(); //currentTimeMillis returns start time
+
     WordHuntSolver solver = new WordHuntSolver(board);
     solver.recursiveSolver();
+
+    long endTime = System.currentTimeMillis();
+    long elapsedTime = endTime - startTime;
     
     List<String> sortedList = solver.sortFoundWords();
     for (String word : sortedList) {
       System.out.println(word);
     }
+
+    System.out.println("Finished in " + elapsedTime + " ms!");
   }
 }
