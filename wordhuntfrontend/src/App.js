@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import logo from './wordhunt.gif';
 import './App.css';
+import Form from './Form';
 
 function App() {
 
@@ -15,13 +16,14 @@ function App() {
         <h2>Get the optimal number of points in GamePigeon's WordHunt!</h2>
         <h4>Start by entering your 16-letter board below.</h4>
         <h6>Input reads board top down, left to right.</h6>
-        <form>
+        {/* <form>
           <label>
             Board:    
             <input type="text" className="textInput" placeholder="your board here..."/>
           </label>
           <input type="submit" className="submitInput" value="Submit"/>
-        </form>
+        </form> */}
+        <Form />
         <div className="wh-footer">
           <a
           className="github-link"
