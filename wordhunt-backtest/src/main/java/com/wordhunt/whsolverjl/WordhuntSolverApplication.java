@@ -6,16 +6,25 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import java.util.Scanner;
 import java.util.List;
 
+/**
+ * Main class that starts Spring Boot app.
+ * `main` method is the entry point of the app.
+ * Initializes Spring Boot app, sets up web server to listen for requests.
+ */
 @SpringBootApplication
 public class WordhuntSolverApplication {
 
 	public static void main (String[] args) {
-    Scanner kb = new Scanner(System.in);
-    System.out.println("Enter the 16 letters of the board, from left to right: ");
+    // Scanner kb = new Scanner(System.in);
+    // System.out.println("Enter the 16 letters of the board, from left to right: ");
     // String str = kb.nextLine();
     // String str = "adukwetobpltuwar";
 
-    char[][] board = convertBoard(str);
+    SpringApplication.run(WordhuntSolverApplication.class, args);
+  }
+
+  public void processBoard(String boardString) {
+    char[][] board = convertBoard(boardString);
 
     long startTime = System.currentTimeMillis(); //currentTimeMillis returns start time
 

@@ -9,6 +9,10 @@ import java.util.Scanner;
 // import java.util.Comparator;
 import java.util.*;
 
+/**
+ * Contains the logic for processing the board string.
+ * Encapsulates the logic for solving a given WordHunt.
+ */
 public class WordHuntSolver {
   private char[][] board; // initial 4x4 board
   private Set<String> words; // set of words from words.txt
