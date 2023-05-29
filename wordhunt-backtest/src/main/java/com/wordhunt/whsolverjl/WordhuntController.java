@@ -15,29 +15,23 @@ import org.springframework.http.ResponseEntity;
 @RestController
 @RequestMapping("/api")
 public class WordhuntController {
+  private final WordhuntService whService;
+
+  public WordhuntController(WordhuntService whService) {
+    this.whService = whService;
+  }
 
   @PostMapping("/submit")
   public ResponseEntity<String> submitForm(@RequestBody FormData formData) {
-    System.out.println("HIHIHIHIHIHHI" + formData.getBoardString());
+    System.out.println("testestest" + formData.getBoardString());
     // Process the form submission logic here
-    String boardString = formData.getBoardString();
+    // String boardString = formData.getBoardString();
+    String boardString = formData.getBoard();
 
-    WordhuntSolverApplication application = new WordhuntSolverApplication();
-    application.processBoard(boardString);
+    // WordhuntSolverApplication application = new WordhuntSolverApplication();
+    whService.processBoard(boardString);
 
     // Return an appropriate response
     return ResponseEntity.ok("Form submitted successfully");
   }
 }
-
-// private class FormData {
-//   private String boardString;
-
-//   private String getBoardString() {
-//     return boardString;
-//   }
-
-//   private void setBoardString(String boardString) {
-//     this.boardString = boardString;
-//   }
-// }
