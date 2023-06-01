@@ -9,7 +9,7 @@ import java.util.*;
 @Service
 public class WordhuntService {
 
-  public void processBoard(String boardString) {
+  public List<String> processBoard(String boardString) {
     char[][] board = convertBoard(boardString);
 
     long startTime = System.currentTimeMillis();
@@ -21,11 +21,13 @@ public class WordhuntService {
     long elapsedTime = endTime - startTime;
 
     List<String> sortedList = solver.sortFoundWords();
-    for (String word : sortedList) {
-        System.out.println(word);
-    }
+    // for (String word : sortedList) {
+    //     System.out.println(word);
+    // }
 
     System.out.println("Finished in " + elapsedTime + " ms!");
+
+    return sortedList;
   }
 
   public static char[][] convertBoard(String input) {
