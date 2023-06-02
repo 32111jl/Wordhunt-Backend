@@ -32,10 +32,10 @@ public class WordhuntController {
     // WordhuntSolverApplication application = new WordhuntSolverApplication();
     List<String> words = whService.processBoard(boardString);
     
-    System.out.println("TESTESTESTSTS");
-    for (String word : words) {
-      System.out.println(word);
-    }
+    // System.out.println("TESTESTESTSTS");
+    // for (String word : words) {
+    //   System.out.println(word);
+    // }
 
     // Return an appropriate response
     // return ResponseEntity.ok("Form submitted successfully");
